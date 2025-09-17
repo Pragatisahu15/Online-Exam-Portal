@@ -2,7 +2,7 @@
   padding: 40px;          
   margin: 50px auto;
   width: 100%;
-  max-width: 1600px;       /* increased width for more horizontal space */
+  max-width: 1600px;      
   border: 1px solid #ddd;
   border-radius: 12px;
   background: #fff;
@@ -88,7 +88,7 @@
 
 .password-input input {
   width: 100%;
-  padding-right: 35px; /* space for eye icon */
+  padding-right: 35px; 
 }
 
 .eye-icon {
