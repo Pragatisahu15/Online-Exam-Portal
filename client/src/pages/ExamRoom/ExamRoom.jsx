@@ -120,7 +120,14 @@ export default function ExamRoom() {
   handleSubmit={handleSubmit}  
 />
 
-
+<QuestionNavigator
+    questions={questions}
+    answers={answers}
+    review={review}
+    currentIdx={idx}
+    setIdx={setIdx}
+  />
+  
       </div>
     </div>
   );

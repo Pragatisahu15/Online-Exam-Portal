@@ -1,6 +1,6 @@
 import React from "react";
 import { formatTime } from "../../utils/helpers";
-import "./css/ExamHeader.css"; 
+import "./css/ExamHeader.css";
 
 export default function ExamHeader({ timeLeft }) {
   return (

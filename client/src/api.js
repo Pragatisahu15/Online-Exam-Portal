@@ -1,10 +1,11 @@
-
 import axios from "axios";
 import { toast } from "react-toastify";
 
 const API = axios.create({
   baseURL: import.meta.env.VITE_API_BASE_URL || "http://localhost:5000/api",
+ 
 });
+
 
 API.interceptors.request.use(
   (config) => {
@@ -17,7 +18,7 @@ API.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-// ✅ Handle expired or invalid token globally
+// Handle expired or invalid token globally
 API.interceptors.response.use(
   (response) => response,
   (error) => {
@@ -25,7 +26,7 @@ API.interceptors.response.use(
       toast.error("Session expired. Please login again.");
       localStorage.removeItem("token");
       localStorage.removeItem("username");
-      localStorage.removeItem("role"); // optional: remove role too
+      localStorage.removeItem("role");
       window.location.href = "/login"; // redirect to login
     }
     return Promise.reject(error);

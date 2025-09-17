@@ -9,12 +9,29 @@ const examRoutes = require("./src/routes/exam");
 
 const app = express();
 
-// Middleware
-app.use(cors({ origin: process.env.CLIENT_URL || "http://localhost:5173" }));
+// Allowed origins: local + deployed frontend
+const allowedOrigins = [
+  "http://localhost:5173",                      // local dev
+  "https://online-exam-portal-iota.vercel.app" // deployed frontend
+];
+
+// CORS middleware
+app.use(cors({
+  origin: function(origin, callback) {
+    if (!origin) return callback(null, true); // allow Postman / server requests
+    if (allowedOrigins.indexOf(origin) === -1) {
+      return callback(new Error(`CORS policy does not allow access from ${origin}`), false);
+    }
+    return callback(null, true);
+  },
+  credentials: true, // only needed if using cookies
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"]
+}));
+
 app.use(express.json());
 
 // Health check
-app.get("/", (req, res) => res.send(" API running"));
+app.get("/", (req, res) => res.send("API running"));
 
 // API Routes
 app.use("/api/auth", authRoutes);
@@ -33,7 +50,7 @@ const start = async () => {
       console.log(`Server running on http://localhost:${port}`)
     );
   } catch (err) {
-    console.error(" Failed to start server:", err.message);
+    console.error("Failed to start server:", err.message);
     process.exit(1);
   }
 };
