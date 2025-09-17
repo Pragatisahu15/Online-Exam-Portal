@@ -1,6 +1,6 @@
 // client/src/utils/helpers.js
 
-// Format seconds to MM:SS
+// Format seconds to MM:SS for exam timer
 export const formatTime = (seconds) => {
   const mm = String(Math.floor(seconds / 60)).padStart(2, "0");
   const ss = String(seconds % 60).padStart(2, "0");
@@ -30,4 +30,21 @@ export const calculateScore = (answers, correctAnswers) => {
   return answers.reduce((score, ans, idx) => {
     return score + (ans === correctAnswers[idx] ? 1 : 0);
   }, 0);
+};
+
+// Get exam button text for Exams page
+export const getExamButtonText = (results, examId) => {
+  const found = results.find((r) => r.exam === examId);
+  return found ? "Retake Exam" : "Start Exam";
+};
+
+// Format ISO date string to readable format
+export const formatDate = (isoString) => {
+  if (!isoString) return "";
+  const date = new Date(isoString);
+  return date.toLocaleDateString("en-GB", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+  });
 };

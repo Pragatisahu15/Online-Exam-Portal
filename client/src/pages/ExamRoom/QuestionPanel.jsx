@@ -10,6 +10,7 @@ export default function QuestionPanel({
   toggleReview,
   setIdx,
   totalQuestions,
+  handleSubmit, 
 }) {
   return (
     <div className="left-panel">
@@ -41,6 +42,14 @@ export default function QuestionPanel({
         </button>
         <button onClick={() => toggleReview(qIdx)}>
           {review[qIdx] ? "Unmark Review" : "Mark for Review"}
+        </button>
+
+        <button
+         onClick={() => handleSubmit()}
+          className="submit-btn"
+          style={{ marginTop: "10px", backgroundColor: "#28a745", color: "#fff" }}
+        >
+          Submit Exam
         </button>
       </div>
     </div>

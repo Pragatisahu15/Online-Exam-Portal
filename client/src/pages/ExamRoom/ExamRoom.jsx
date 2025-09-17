@@ -108,23 +108,19 @@ export default function ExamRoom() {
     <div className="exam-room">
       <ExamHeader timeLeft={timeLeft} />
       <div className="exam-body">
-        <QuestionPanel
-          question={questions[idx]}
-          qIdx={idx}
-          answers={answers}
-          review={review}
-          handleSelect={handleSelect}
-          toggleReview={toggleReview}
-          setIdx={setIdx}
-          totalQuestions={questions.length}
-        />
-        <QuestionNavigator
-          questions={questions}
-          answers={answers}
-          review={review}
-          currentIdx={idx}
-          setIdx={setIdx}
-        />
+       <QuestionPanel
+  question={questions[idx]}
+  qIdx={idx}
+  answers={answers}
+  review={review}
+  handleSelect={handleSelect}
+  toggleReview={toggleReview}
+  setIdx={setIdx}
+  totalQuestions={questions.length}
+  handleSubmit={handleSubmit}   // ✅ include here
+/>
+
+
       </div>
     </div>
   );
