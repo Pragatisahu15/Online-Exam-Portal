@@ -117,7 +117,7 @@ export default function ExamRoom() {
   toggleReview={toggleReview}
   setIdx={setIdx}
   totalQuestions={questions.length}
-  handleSubmit={handleSubmit}   // ✅ include here
+  handleSubmit={handleSubmit}  
 />
 
 
